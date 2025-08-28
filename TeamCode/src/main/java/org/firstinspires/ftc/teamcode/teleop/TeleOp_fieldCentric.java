@@ -34,11 +34,13 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.IMU;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
-@TeleOp(name = "Robot: Field Relative Mecanum Drive", group = "Robot")
+@TeleOp(name = "Field Centric TeleOp", group = "Robot")
 
 public class TeleOp_fieldCentric extends OpMode {
+    private ElapsedTime runTime = new ElapsedTime();
     DcMotor frontLeft;
     DcMotor frontRight;
     DcMotor backLeft;
@@ -69,9 +71,6 @@ public class TeleOp_fieldCentric extends OpMode {
     @Override
     public void loop() {
         telemetry.addLine("Press A to reset Yaw");
-        telemetry.addLine("Hold left bumper to drive in robot relative");
-        telemetry.addLine("The left joystick sets the robot direction");
-        telemetry.addLine("Moving the right joystick left and right turns the robot");
         if (gamepad1.a) {
             imu.resetYaw();
         }
@@ -105,8 +104,8 @@ public class TeleOp_fieldCentric extends OpMode {
         double backRightPower = forward + right - rotate;
         double backLeftPower = forward - right + rotate;
 
-        double maxPower = 1.0;
-        double maxSpeed = 1.0;
+        double maxPower = 0.6;
+        double maxSpeed = 0.6;
 
         maxPower = Math.max(maxPower, Math.abs(frontLeftPower));
         maxPower = Math.max(maxPower, Math.abs(frontRightPower));
@@ -117,5 +116,10 @@ public class TeleOp_fieldCentric extends OpMode {
         frontRight.setPower(maxSpeed * (frontRightPower / maxPower));
         backLeft.setPower(maxSpeed * (backLeftPower / maxPower));
         backRight.setPower(maxSpeed * (backRightPower / maxPower));
+
+        telemetry.addData("Status", "Run Time: " + runTime.toString());
+        telemetry.addData("Front Motors: ", "%4.2f", frontLeftPower, frontRightPower);
+        telemetry.addData("Back Motors:", "%4.2f, %4.2f", backLeftPower, backRightPower);
+        telemetry.update();
     }
 }

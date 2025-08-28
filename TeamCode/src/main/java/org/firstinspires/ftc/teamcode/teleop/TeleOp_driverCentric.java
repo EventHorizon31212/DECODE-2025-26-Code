@@ -10,7 +10,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * 3) Yaw:      Rotating Clockwise and counter clockwise    Right-joystick Right and Left
  */
 
-@com.qualcomm.robotcore.eventloop.opmode.TeleOp(name="TeleOp")
+@com.qualcomm.robotcore.eventloop.opmode.TeleOp(name="Robot Centric TeleOp", group="Robot")
 
 public class TeleOp_driverCentric extends LinearOpMode {
     private  ElapsedTime runTime = new ElapsedTime();
@@ -53,7 +53,7 @@ public class TeleOp_driverCentric extends LinearOpMode {
             max = Math.max(max, Math.abs(backLeftPower));
             max = Math.max(max, Math.abs(backRightPower));
 
-            if (max > 1.0) {
+            if (max > 0.6) {
                 frontLeftPower  /= max;
                 frontRightPower /= max;
                 backLeftPower   /= max;
