@@ -84,17 +84,6 @@ public class TeleOp_fieldCentric extends OpMode {
             driveFieldRelative(-gamepad1.left_stick_y, gamepad1.left_stick_x, gamepad1.right_stick_x);
         }
 
-        if (Math.abs(gamepad1.left_stick_x) < deadZone) {
-            gamepad1.left_stick_x = 0;
-        }
-
-        if (Math.abs(-gamepad1.left_stick_y) < deadZone) {
-            gamepad1.left_stick_x = 0;
-        }
-
-        if (Math.abs(gamepad1.right_stick_x) < deadZone) {
-            gamepad1.left_stick_x = 0;
-        }
     }
 
     private void driveFieldRelative(double forward, double right, double rotate) {
