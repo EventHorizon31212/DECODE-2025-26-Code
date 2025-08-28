@@ -14,7 +14,10 @@ You can use this to create your own paths and test them, there is a new version 
 https://visualizer.pedropathing.com/ <br>
 
 ## Autonomous OpModes
-All of our autonomous code is under the 'pedropathing' module, and under 'auto'
+All of our autonomous code is under the 'pedroPathing' module, and under 'auto'
 
 ## TeleOp Opmodes
-All of our teleop code is under the teleop module
+All of our teleop code is under the 'teleop' module
+
+## Sample OpModes
+There are sample programs located under 'FtcRobotController' that can help you learn how to do specific things (ie. sounds or camera vision)
