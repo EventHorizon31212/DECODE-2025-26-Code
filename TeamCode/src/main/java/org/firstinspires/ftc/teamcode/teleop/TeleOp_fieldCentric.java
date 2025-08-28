@@ -45,8 +45,6 @@ public class TeleOp_fieldCentric extends OpMode {
     DcMotor backRight;
     IMU imu;
 
-    final double deadZone = 0.1;
-
     @Override
     public void init() {
         frontLeft = hardwareMap.get(DcMotor.class, "frontLeft");
