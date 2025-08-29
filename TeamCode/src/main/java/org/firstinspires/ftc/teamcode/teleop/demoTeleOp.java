@@ -37,9 +37,9 @@ import com.qualcomm.robotcore.hardware.IMU;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
-@TeleOp(name = "Field Centric TeleOp", group = "Robot")
+@TeleOp(name = "Demo TeleOp", group = "Robot")
 
-public class TeleOp_fieldCentric extends OpMode {
+public class demoTeleOp extends OpMode {
     private ElapsedTime runTime = new ElapsedTime();
     DcMotor frontLeft;
     DcMotor frontRight;
@@ -104,8 +104,8 @@ public class TeleOp_fieldCentric extends OpMode {
         double backRightPower = forward + right - rotate;
         double backLeftPower = forward - right + rotate;
 
-        double maxPower = 1;
-        double maxSpeed = 1;
+        double maxPower = 0.5;
+        double maxSpeed = 0.5;
 
         maxPower = Math.max(maxPower, Math.abs(frontLeftPower));
         maxPower = Math.max(maxPower, Math.abs(frontRightPower));
