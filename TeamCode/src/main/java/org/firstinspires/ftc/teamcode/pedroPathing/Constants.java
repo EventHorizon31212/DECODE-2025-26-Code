@@ -2,6 +2,8 @@ package org.firstinspires.ftc.teamcode.pedroPathing;
 
 import android.annotation.SuppressLint;
 
+import com.pedropathing.control.FilteredPIDFCoefficients;
+import com.pedropathing.control.PIDFCoefficients;
 import com.pedropathing.follower.Follower;
 import com.pedropathing.follower.FollowerConstants;
 import com.pedropathing.ftc.FollowerBuilder;
@@ -21,9 +23,12 @@ public class Constants {
 
     public static FollowerConstants followerConstants = new FollowerConstants()
             .mass(4.99)
-            .forwardZeroPowerAcceleration(-41.278)
-            .lateralZeroPowerAcceleration(-59.7819)
-            .centripetalScaling(0.0005);
+            .forwardZeroPowerAcceleration(-51.52186169612585)
+            .lateralZeroPowerAcceleration(-48.482894898440705)
+            .centripetalScaling(0.0005)
+            .translationalPIDFCoefficients(new PIDFCoefficients(0.1, 0, 0.01, 0))
+            .headingPIDFCoefficients(new PIDFCoefficients(0.2, 0.15, 0.1, 0));
+
 
     public static MecanumConstants driveConstants = new MecanumConstants()
             .leftFrontMotorName("frontLeft")
@@ -34,17 +39,18 @@ public class Constants {
             .leftRearMotorDirection(DcMotorSimple.Direction.REVERSE)
             .rightFrontMotorDirection(DcMotorSimple.Direction.FORWARD)
             .rightRearMotorDirection(DcMotorSimple.Direction.FORWARD)
-            .xVelocity(57.8741)
-            .yVelocity(57.8741);
+            .xVelocity(67.14043228269563)
+            .yVelocity(61.276640163631896);
+
 
     public static PinpointConstants localizerConstants = new PinpointConstants()
-    .forwardPodY(7)
+    .forwardPodY(-6)
     .strafePodX(-7)
     .distanceUnit(DistanceUnit.INCH)
     .hardwareMapName("pinpoint")
     .encoderResolution(GoBildaPinpointDriver.GoBildaOdometryPods.goBILDA_4_BAR_POD)
     .forwardEncoderDirection(GoBildaPinpointDriver.EncoderDirection.REVERSED)
-    .strafeEncoderDirection(GoBildaPinpointDriver.EncoderDirection.FORWARD);
+    .strafeEncoderDirection(GoBildaPinpointDriver.EncoderDirection.REVERSED);
 
 
     public static PathConstraints pathConstraints = new PathConstraints(
@@ -53,7 +59,7 @@ public class Constants {
             0.1,
             0.007,
             500,
-            4,
+            1.5,
             10,
             1
     );
