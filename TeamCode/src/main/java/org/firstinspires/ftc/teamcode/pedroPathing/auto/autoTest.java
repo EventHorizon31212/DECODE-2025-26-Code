@@ -15,12 +15,13 @@ public class autoTest extends OpMode {
     private int pathState;
     private final Pose startPose = new Pose(70, 70, Math.toRadians(90));
     private final Pose cPoint = new Pose(115, 50);
+    private final Pose cPoint2 = new Pose(135,3);
     private final Pose endPose = new Pose(120, 120, Math.toRadians(270));
-    private PathChain testPath;
+    private PathChain testPath, testPath2;
 
     public void buildPaths() {
         testPath = follower.pathBuilder()
-                .addPath(new BezierCurve(startPose, cPoint, endPose))
+                .addPath(new BezierCurve(startPose, cPoint, cPoint2, endPose))
                 .setLinearHeadingInterpolation(startPose.getHeading(), endPose.getHeading())
                 .build();
     }
