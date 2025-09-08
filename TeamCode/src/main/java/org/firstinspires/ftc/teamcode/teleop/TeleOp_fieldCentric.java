@@ -29,8 +29,6 @@ public class TeleOp_fieldCentric extends OpMode {
     DcMotor backLeft;
     DcMotor backRight;
     IMU imu;
-    AprilTagProcessor myAprilTagProcessor;
-    VisionPortal myVisionPortal;
 
     @Override
     public void init() {
@@ -51,23 +49,6 @@ public class TeleOp_fieldCentric extends OpMode {
         RevHubOrientationOnRobot orientationOnRobot = new
                 RevHubOrientationOnRobot(logoDirection, usbDirection);
         imu.initialize(new IMU.Parameters(orientationOnRobot));
-
-        myAprilTagProcessor = new AprilTagProcessor.Builder()
-                .setTagLibrary(AprilTagGameDatabase.getCurrentGameTagLibrary())
-                .setDrawTagID(true)
-                .setDrawTagOutline(true)
-                .setDrawAxes(true)
-                .setDrawCubeProjection(true)
-                .build();
-
-        myVisionPortal = new VisionPortal.Builder()
-                .setCamera(hardwareMap.get(WebcamName.class, "webcam"))
-                .addProcessor(myAprilTagProcessor)
-                .setCameraResolution(new Size(640, 480))
-                .setStreamFormat(VisionPortal.StreamFormat.YUY2)
-                .enableLiveView(true)
-                .setAutoStopLiveView(true)
-                .build();
 
         telemetry.addData("Status", "Initialized");
     }
