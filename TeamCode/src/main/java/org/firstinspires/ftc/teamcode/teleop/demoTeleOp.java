@@ -38,7 +38,8 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 @TeleOp(name = "Demo TeleOp", group = "Robot")
-
+//remove @disabled to add to opmode list
+@Disabled
 public class demoTeleOp extends OpMode {
     private ElapsedTime runTime = new ElapsedTime();
     DcMotor frontLeft;

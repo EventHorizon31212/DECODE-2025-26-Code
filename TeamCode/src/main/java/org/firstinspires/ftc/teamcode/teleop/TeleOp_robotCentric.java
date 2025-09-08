@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.teleop;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
 /*
  * 1) Axial:    Driving forward and backward               Left-joystick Forward/Backward
@@ -11,8 +12,9 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  */
 
 @com.qualcomm.robotcore.eventloop.opmode.TeleOp(name="Robot Centric TeleOp", group="Robot")
-
-public class TeleOp_driverCentric extends LinearOpMode {
+//remove @disabled to add to opmode list
+@Disabled
+public class TeleOp_robotCentric extends LinearOpMode {
     private  ElapsedTime runTime = new ElapsedTime();
     private DcMotor frontLeft;
     private DcMotor backLeft;
