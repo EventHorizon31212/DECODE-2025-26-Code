@@ -10,6 +10,9 @@ import com.pedropathing.util.Timer;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
+import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
+import org.firstinspires.ftc.robotcore.external.navigation.Position;
+import org.firstinspires.ftc.robotcore.external.navigation.YawPitchRollAngles;
 import org.firstinspires.ftc.teamcode.pedroPathing.Constants;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
@@ -34,6 +37,11 @@ public class autoTest extends OpMode {
     private PathChain testPath, testPath2;
     AprilTagProcessor myAprilTagProcessor;
     VisionPortal myVisionPortal;
+    AprilTagDetection myAprilTagDetection;
+    private Position cameraPosition = new Position(DistanceUnit.INCH,
+            0, 0, 0, 0);
+    private YawPitchRollAngles cameraOrientation = new YawPitchRollAngles(AngleUnit.DEGREES,
+            0, -90, 0, 0);
 
     public void buildPaths() {
         testPath = follower.pathBuilder()
@@ -44,12 +52,12 @@ public class autoTest extends OpMode {
                 .addPath(new BezierLine(startPose2, endPose2))
                 .setLinearHeadingInterpolation(startPose2.getHeading(), endPose2.getHeading())
                 .build();
-    }
+    }//end path building
 
     public void setPathState(int pState) {
         pathState = pState;
         pathTimer.resetTimer();
-    }
+    }//end setPathState init
 
     public void autonomousPathUpdate() {
         switch (pathState) {
@@ -65,19 +73,21 @@ public class autoTest extends OpMode {
                     setPathState(2);
                     break;
                 }
-        }
-    }
+        }//end switch
+    }//end autonomousPathUpdate
 
     @Override
     public void loop() {
+        //actually running the code
         follower.update();
         autonomousPathUpdate();
+        //pose update
         telemetry.addData("path state", pathState);
         telemetry.addData("x", follower.getPose().getX());
         telemetry.addData("y", follower.getPose().getY());
         telemetry.addData("heading", follower.getPose().getHeading());
         telemetry.update();
-    }
+    }//end loop
 
     @Override
     public void init() {
@@ -105,11 +115,11 @@ public class autoTest extends OpMode {
                 .build();
 
         telemetry.addData("Status: ", "Initialized");
-    }
+    }//end init
 
     @Override
     public void start() {
         setPathState(0);
-    }
-}
+    } //end start
+} //end class
 
