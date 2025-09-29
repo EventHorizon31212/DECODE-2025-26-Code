@@ -95,6 +95,7 @@ public class TeleOp_fieldCentric extends OpMode {
         telemetry.addData("Status", "Run Time: " + runTime.toString());
         telemetry.addData("Front Motors: ", "%4.2f", frontLeftPower, frontRightPower);
         telemetry.addData("Back Motors:", "%4.2f, %4.2f", backLeftPower, backRightPower);
+        telemetry.addData("IMU Yaw: ", imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.DEGREES));
         telemetry.update();
     }
 }
