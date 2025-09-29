@@ -26,7 +26,7 @@ import org.firstinspires.ftc.vision.apriltag.AprilTagDetection;
 
 @Autonomous(name = "autoTest", group = "Robot")
 public class autoTest extends OpMode {
-    private Follower follower;
+    private Follower follower;//
     private Timer pathTimer;
     private int pathState;
     private final Pose startPose = new Pose(38, 12, Math.toRadians(90));
