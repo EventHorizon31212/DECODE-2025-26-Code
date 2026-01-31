@@ -39,7 +39,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 @TeleOp(name = "Demo TeleOp", group = "Robot")
 //remove @disabled to add to opmode list
-@Disabled
+
 public class demoTeleOp extends OpMode {
     private ElapsedTime runTime = new ElapsedTime();
     DcMotor frontLeft;
@@ -62,7 +62,7 @@ public class demoTeleOp extends OpMode {
         RevHubOrientationOnRobot.LogoFacingDirection logoDirection =
                 RevHubOrientationOnRobot.LogoFacingDirection.UP;
         RevHubOrientationOnRobot.UsbFacingDirection usbDirection =
-                RevHubOrientationOnRobot.UsbFacingDirection.LEFT;
+                RevHubOrientationOnRobot.UsbFacingDirection.RIGHT;
 
         RevHubOrientationOnRobot orientationOnRobot = new
                 RevHubOrientationOnRobot(logoDirection, usbDirection);

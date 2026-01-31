@@ -13,7 +13,6 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
 @com.qualcomm.robotcore.eventloop.opmode.TeleOp(name="Robot Centric TeleOp", group="Robot")
 //remove @disabled to add to opmode list
-@Disabled
 public class TeleOp_robotCentric extends LinearOpMode {
     private  ElapsedTime runTime = new ElapsedTime();
     private DcMotor frontLeft;
@@ -55,7 +54,7 @@ public class TeleOp_robotCentric extends LinearOpMode {
             max = Math.max(max, Math.abs(backLeftPower));
             max = Math.max(max, Math.abs(backRightPower));
 
-            if (max > 0.6) {
+            if (max > 0.5) {
                 frontLeftPower  /= max;
                 frontRightPower /= max;
                 backLeftPower   /= max;
